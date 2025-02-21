@@ -1,1 +1,3 @@
 -e "# Devoir Session\n\n## Small Html css hello world project" 
+-e "# Il permettre d'evaluer les competences de l'etudiant a utiliser les commandes git\n\n## Small Html css hello world project" 
+-e "# il evaluera son aptitude a pouvoir effectue des push, commit pull request et github action\n\n## Small Html css hello world project" 
