@@ -1,0 +1,36 @@
+name: Say Hello and Comment on PR or Push
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+  push:
+    branches: [main, develop]
+
+permissions:
+  contents: write
+  pull-requests: write
+  issues: write
+
+jobs:
+  say-hello:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Display a message in logs
+        run: echo "Hello from GitHub Actions!"
+
+      - name: Add a comment to the PR (if applicable)
+        if: ${{ github.event_name == 'pull_request' }}
+        uses: actions/github-script@v6
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            github.rest.issues.createComment({
+              issue_number: context.payload.pull_request.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: "Hello from GitHub Actions! Thanks for your contribution."
+            })
+
+      - name: Log a message for push events
+        if: ${{ github.event_name != 'pull_request' }}
+        run: echo "This is a push event. No PR comment will be added."
