@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animation Bouton</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: linear-gradient(45deg, #ff9a9e, #fad0c4);
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        .btn {
+            background: #ff416c;
+            color: white;
+            padding: 15px 40px;
+            font-size: 18px;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn:hover {
+            background: #ff4b2b;
+            transform: scale(1.1);
+        }
+
+        .btn::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.3);
+            top: 0;
+            left: -100%;
+            transition: left 0.3s ease;
+        }
+
+        .btn:hover::after {
+            left: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <button class="btn">Clique-moi</button>
+</body>
+
+</html>
